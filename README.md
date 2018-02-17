@@ -1,2 +1,2 @@
-# withRoles
-A higher order component for adding roles to React components.
+# withPerms
+A higher order component for adding permissions to React components.
