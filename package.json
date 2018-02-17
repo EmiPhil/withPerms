@@ -1,9 +1,10 @@
 {
   "name": "with-perms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A higher order component for adding permissions to React components.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "files": [
+    "dist/index.js",
     "src/index.js",
     "README.md"
   ],
