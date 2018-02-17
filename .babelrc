@@ -1,0 +1,37 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        }
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "lodash",
+    "transform-object-rest-spread"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul"
+      ]
+    },
+    "build": {
+      "presets": [
+        [
+          "minify",
+          {
+            "mangle": false
+          }
+        ]
+      ]
+    }
+  }
+}
