@@ -1,0 +1,93 @@
+{
+  "name": "with-perms",
+  "version": "1.0.0",
+  "description": "A higher order component for adding permissions to React components.",
+  "main": "src/index.js",
+  "files": [
+    "src/index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && cross-env NODE_ENV=build babel src -d dist",
+    "cov": "cross-env NODE_ENV=test nyc report --reporter=lcov && echo 'Cov complete.'",
+    "test": "ava",
+    "lint": "eslint src && echo 'Lint complete.'",
+    "test:cov": "nyc npm run test && npm run cov",
+    "test:suite": "npm run test:cov && npm run lint",
+    "watch": "watch 'clear && npm run test:suite' src test",
+    "verify": "npm run -s test && npm run -s lint",
+    "prepare": "npm run clean && npm run lint && npm test && npm run build",
+    "precommit": "npm run verify",
+    "preversion": "npm run test:suite",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "./test/helpers/setup-test-env.js"
+    ],
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "concurrency": 20
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmiPhil/withPerms.git"
+  },
+  "keywords": [
+    "react",
+    "permissions",
+    "roles",
+    "acl",
+    "withperms",
+    "perms"
+  ],
+  "author": "EmiPhil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EmiPhil/withPerms/issues"
+  },
+  "homepage": "https://github.com/EmiPhil/withPerms#readme",
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-minify": "^0.3.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "cross-env": "^5.1.3",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "jsdom": "^11.6.2",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2",
+    "watch": "^1.0.2"
+  }
+}
